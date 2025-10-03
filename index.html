@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Document</title>
+    <link rel="shortcut icon" href="accounting.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .typewriter {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        white-space: pre-wrap;
+        border-right: 2px solid #333; /* Cursor effect */
+        padding: 10px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="p-5 bg-dark text-white">
+      <h1
+        class="text-center animate__animated animate__lightSpeedInLeft animate__slow"
+      >
+        Expense Document
+      </h1>
+      <div id="typewriter" class="typewriter"></div>
+
+      <!-- <p class="pt-3 animate__animated animate__lightSpeedInLeft animate__slower">
+        <span class="fs-5">T</span>his document serves as an official record of
+        all expenses incurred during company-related activities. It details
+        costs such as <b>transportation, accommodation- expenditures</b>,
+        ensuring transparency and compliance with reimbursement policies.
+      </p> -->
+    </div>
+
+    <script>
+      const text = `This document serves as an official record of all expenses incurred during company-related activities. It details costs such as transportation, accommodation- expenditures, ensuring transparency and compliance with reimbursement policies.`;
+      const speed = 40; // milliseconds per character
+
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typewriter").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+       window.onload = function() {
+        setTimeout(typeWriter, 2000);
+    };
+    </script>
+  </body>
+</html>
