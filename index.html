@@ -21,6 +21,22 @@
       crossorigin="anonymous"
     ></script>
     <style>
+    /* Cool animation for total expenditure jumbotron */
+    .total-expenditure-jumbo {
+      border-radius: 0 !important;
+      animation: borderGlow 2.5s linear infinite;
+    }
+    @keyframes borderGlow {
+      0% {
+        border-image: linear-gradient(90deg, #22c55e, #3b82f6, #a78bfa) 1;
+      }
+      50% {
+        border-image: linear-gradient(90deg, #a78bfa, #3b82f6, #22c55e) 1;
+      }
+      100% {
+        border-image: linear-gradient(90deg, #22c55e, #3b82f6, #a78bfa) 1;
+      }
+    }
       @media (max-width: 576px) {
         .expense-card {
           margin-left: 4vw;
@@ -327,6 +343,17 @@
   </head>
 
   <body>
+  <!-- Loader Page -->
+  <div id="loader-page" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:linear-gradient(120deg,#e0e7ff 0%,#f8fafc 100%);display:flex;align-items:center;justify-content:center;transition:opacity 0.5s;">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+      <div style="display:flex;gap:1.2rem;">
+        <span class="material-icons animate__animated animate__bounce animate__infinite" style="font-size:3rem;color:#3b82f6;">account_balance_wallet</span>
+        <span class="material-icons animate__animated animate__bounce animate__infinite animate__delay-1s" style="font-size:3rem;color:#22c55e;">receipt_long</span>
+        <span class="material-icons animate__animated animate__bounce animate__infinite animate__delay-2s" style="font-size:3rem;color:#a78bfa;">trending_up</span>
+      </div>
+      <div style="margin-top:1.2rem;font-size:1.2rem;color:#23272a;font-weight:600;letter-spacing:0.04em;">Loading your expenses...</div>
+    </div>
+  </div>
     <!-- Bill Image Modal - Modern Responsive & Zoomable -->
     <div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -344,6 +371,17 @@
       </div>
     </div>
     <script>
+  // Always show loader for ~3 seconds before revealing page content
+  document.body.style.overflow = 'hidden';
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      var loader = document.getElementById('loader-page');
+      if(loader) {
+        loader.style.opacity = '0';
+        setTimeout(function(){ loader.style.display = 'none'; document.body.style.overflow = ''; }, 500);
+      }
+    }, 3000);
+  });
       // Zoom functionality for bill image
       document.addEventListener('DOMContentLoaded', function() {
         var billImg = document.getElementById('billImg');
@@ -408,6 +446,22 @@
     </div>
 
     <div id="expense-container" class="container mt-4" style="display: none;">
+      <!-- Summary Card: Total Expenditure -->
+      <div class="row justify-content-center mb-3">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+            <div class="jumbotron jumbotron-fluid py-3 px-3 mb-3 total-expenditure-jumbo animate__animated animate__fadeIn animate__slow" style="background: linear-gradient(90deg, #23272a 0%, #181a1b 100%); border-radius: 0; max-width: 420px; margin: 0 auto; box-shadow: 0 4px 24px rgba(33,37,41,0.14);">
+              <div class="d-flex flex-row align-items-center w-100" style="padding:0; margin:0;">
+                <div class="summary-icon" style="flex: 0 0 40%; max-width: 40%; height: 100%; display: flex; align-items: stretch; justify-content: flex-start; padding:0; margin:0;">
+                  <span class="material-icons" style="font-size: 100px; color: #fff; background: #22c55e; border-radius: 0 14px 14px 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(34,197,94,0.18); padding:0; margin:0;">account_balance_wallet</span>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center" style="flex: 0 0 60%; max-width: 60%; padding:0; margin:0;">
+                  <div class="summary-label text-center" style="color: #e9ecef; font-size: 1.08rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 2px;">Total Expenditure</div>
+                  <div class="summary-value text-center" id="total-expenditure" style="color: #22c55e; font-size: 1.32rem; font-weight: 800; letter-spacing: 0.04em;">₹0</div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
       <h3
         class="mb-4 text-center animate__animated animate__lightSpeedInLeft animate__slow"
         id="expense-header"
@@ -677,6 +731,17 @@
           observer.observe(card);
         });
       };
+
+      function calculateTotalExpenditure() {
+    let total = 0;
+    document.querySelectorAll('.amount-badge').forEach(el => {
+      const amount = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
+      if (!isNaN(amount)) total += amount;
+    });
+    document.getElementById('total-expenditure').textContent = '₹' + total.toLocaleString('en-IN');
+  }
+  // Run on page load
+  window.addEventListener('DOMContentLoaded', calculateTotalExpenditure);
     </script>
   </body>
 </html>
