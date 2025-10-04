@@ -54,10 +54,6 @@
   overflow-x: hidden;
 }
   body.dark-mode {
-  /* Make Expenditure Records header white in dark mode */
-  #expense-header {
-    color: #fff !important;
-  }
     background: linear-gradient(120deg, #181a1b 0%, #23272a 100%);
   }
   body.dark-mode::before {
@@ -743,10 +739,6 @@
         } else {
           const container = document.getElementById("expense-container");
           container.style.display = "block";
-          // Hide expense cards initially
-          document.querySelectorAll('.expense-card').forEach(card => {
-            card.style.display = 'none';
-          });
           // Animate total expenditure after summary is visible
           calculateTotalExpenditure();
         }
@@ -797,10 +789,6 @@
             requestAnimationFrame(step);
           } else {
             el.textContent = '₹' + finalAmount.toLocaleString('en-IN');
-            // Reveal expense cards after animation
-            document.querySelectorAll('.expense-card').forEach(card => {
-              card.style.display = '';
-            });
           }
         }
         requestAnimationFrame(step);
