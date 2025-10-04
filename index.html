@@ -49,8 +49,40 @@
         }
       }
       body {
-        background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
-      }
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+  body.dark-mode {
+  /* Make Expenditure Records header white in dark mode */
+  #expense-header {
+    color: #fff !important;
+  }
+    background: linear-gradient(120deg, #181a1b 0%, #23272a 100%);
+  }
+  body.dark-mode::before {
+    opacity: 0.13;
+    background: repeating-linear-gradient(135deg, #a78bfa 0px, #a78bfa 2px, transparent 2px, transparent 40px), repeating-linear-gradient(45deg, #3b82f6 0px, #3b82f6 2px, transparent 2px, transparent 40px);
+  animation: bgMove 16s linear infinite;
+}
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="40" fill="none"/><circle cx="20" cy="20" r="2" fill="%233b82f6"/><circle cx="0" cy="0" r="2" fill="%2322c55e"/><circle cx="40" cy="40" r="2" fill="%23a78bfa"/><circle cx="40" cy="0" r="2" fill="%23e0e7ff"/><circle cx="0" cy="40" r="2" fill="%23f8fafc"/></svg>');
+    background-repeat: repeat;
+    background-size: 40px 40px;
+  }
+  body.dark-mode {
+    background: linear-gradient(120deg, #181a1b 0%, #23272a 100%);
+  }
+  body.dark-mode::before {
+  opacity: 0.13;
+  background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="40" fill="none"/><circle cx="20" cy="20" r="2" fill="%23a78bfa"/><circle cx="0" cy="0" r="2" fill="%233b82f6"/><circle cx="40" cy="40" r="2" fill="%2322c55e"/><circle cx="40" cy="0" r="2" fill="%2323272a"/><circle cx="0" cy="40" r="2" fill="%23181a1b"/></svg>');
+}
       .expense-card {
         opacity: 0;
         transform: translateY(30px) scale(0.98);
@@ -343,7 +375,12 @@
   </head>
 
   <body>
-  <!-- Loader Page -->
+  
+  
+  <button id="theme-toggle" aria-label="Toggle dark mode" style="position:fixed;top:18px;right:18px;z-index:10001;background:#fff;border:none;border-radius:50%;box-shadow:0 2px 12px rgba(33,37,41,0.12);width:48px;height:48px;display:flex;align-items:center;justify-content:center;transition:background 0.3s;display:none;"><span id="theme-icon" class="material-icons" style="font-size:2rem;color:#23272a;transition:color 0.3s;">dark_mode</span></button>
+    
+    
+  
   <div id="loader-page" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:linear-gradient(120deg,#e0e7ff 0%,#f8fafc 100%);display:flex;align-items:center;justify-content:center;transition:opacity 0.5s;">
     <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
       <div style="display:flex;gap:1.2rem;">
@@ -354,7 +391,7 @@
       <div style="margin-top:1.2rem;font-size:1.2rem;color:#23272a;font-weight:600;letter-spacing:0.04em;">Loading your expenses...</div>
     </div>
   </div>
-    <!-- Bill Image Modal - Modern Responsive & Zoomable -->
+    
     <div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -371,17 +408,18 @@
       </div>
     </div>
     <script>
-  // Always show loader for ~3 seconds before revealing page content
-  document.body.style.overflow = 'hidden';
-  window.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      var loader = document.getElementById('loader-page');
-      if(loader) {
-        loader.style.opacity = '0';
-        setTimeout(function(){ loader.style.display = 'none'; document.body.style.overflow = ''; }, 500);
-      }
-    }, 3000);
-  });
+    // Always show loader for ~3 seconds before revealing page content
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        var loader = document.getElementById('loader-page');
+        var themeToggle = document.getElementById('theme-toggle');
+        if(loader) {
+          loader.style.opacity = '0';
+          setTimeout(function(){ loader.style.display = 'none'; document.body.style.overflow = ''; if(themeToggle) themeToggle.style.display = 'flex'; }, 500);
+        }
+      }, 3000);
+    });
       // Zoom functionality for bill image
       document.addEventListener('DOMContentLoaded', function() {
         var billImg = document.getElementById('billImg');
@@ -400,7 +438,7 @@
         }
       });
     </script>
-    <!-- Bill Image Modal - Modern Responsive & Zoomable -->
+    
     <div class="modal fade" id="billModal" tabindex="-1" aria-labelledby="billModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" style="display:flex;align-items:center;min-height:100vh;">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -446,17 +484,17 @@
     </div>
 
     <div id="expense-container" class="container mt-4" style="display: none;">
-      <!-- Summary Card: Total Expenditure -->
+      
       <div class="row justify-content-center mb-3">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-            <div class="jumbotron jumbotron-fluid py-3 px-3 mb-3 total-expenditure-jumbo animate__animated animate__fadeIn animate__slow" style="background: linear-gradient(90deg, #23272a 0%, #181a1b 100%); border-radius: 0; max-width: 420px; margin: 0 auto; box-shadow: 0 4px 24px rgba(33,37,41,0.14);">
+    <div class="container-fluid px-0">
+      <div class="jumbotron jumbotron-fluid py-3 px-3 mb-3 total-expenditure-jumbo animate__animated animate__fadeIn animate__slow" style="background: linear-gradient(90deg, #23272a 0%, #181a1b 100%); border-radius: 0; width: 100vw; max-width: 100vw; margin: 0 auto 2rem auto; box-shadow: 0 4px 24px rgba(33,37,41,0.14);">
               <div class="d-flex flex-row align-items-center w-100" style="padding:0; margin:0;">
-                <div class="summary-icon" style="flex: 0 0 40%; max-width: 40%; height: 100%; display: flex; align-items: stretch; justify-content: flex-start; padding:0; margin:0;">
+                <div class="summary-icon" style="flex: 0 0 20%; max-width: 20%; height: 100%; display: flex; align-items: stretch; justify-content: flex-start; padding:0; margin:0;">
                   <span class="material-icons" style="font-size: 100px; color: #fff; background: #22c55e; border-radius: 0 14px 14px 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(34,197,94,0.18); padding:0; margin:0;">account_balance_wallet</span>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center" style="flex: 0 0 60%; max-width: 60%; padding:0; margin:0;">
                   <div class="summary-label text-center" style="color: #e9ecef; font-size: 1.08rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 2px;">Total Expenditure</div>
-                  <div class="summary-value text-center" id="total-expenditure" style="color: #22c55e; font-size: 1.32rem; font-weight: 800; letter-spacing: 0.04em;">₹0</div>
+                  <div class="summary-value text-center" id="total-expenditure" style="color: #22c55e; font-size: 2.1rem; font-weight: 800; letter-spacing: 0.04em;">₹0</div>
                 </div>
               </div>
             </div>
@@ -494,7 +532,7 @@
             </div>
             <div class="card-footer">
               <a href="4.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    <!-- Modal for Train Ticket -->
+    
     <div class="modal fade" id="billModal1" tabindex="-1" aria-labelledby="billModalLabel1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -538,7 +576,7 @@
             </div>
             <div class="card-footer">
               <a href="2.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    <!-- Modal for Hotel 1 -->
+    
     <div class="modal fade" id="billModal2" tabindex="-1" aria-labelledby="billModalLabel2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -582,7 +620,7 @@
             </div>
             <div class="card-footer">
               <a href="1.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    <!-- Modal for Hotel 2 -->
+    
     <div class="modal fade" id="billModal3" tabindex="-1" aria-labelledby="billModalLabel3" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -626,7 +664,7 @@
             </div>
             <div class="card-footer">
               <a href="5.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    <!-- Modal for Bus Ticket 1 -->
+    
     <div class="modal fade" id="billModal4" tabindex="-1" aria-labelledby="billModalLabel4" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -670,7 +708,7 @@
             </div>
             <div class="card-footer">
               <a href="7.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    <!-- Modal for Bus Ticket 2 -->
+    
     <div class="modal fade" id="billModal5" tabindex="-1" aria-labelledby="billModalLabel5" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
@@ -705,11 +743,26 @@
         } else {
           const container = document.getElementById("expense-container");
           container.style.display = "block";
+          // Hide expense cards initially
+          document.querySelectorAll('.expense-card').forEach(card => {
+            card.style.display = 'none';
+          });
+          // Animate total expenditure after summary is visible
+          calculateTotalExpenditure();
         }
       }
 
       window.onload = function () {
-        setTimeout(typeWriter, 2000);
+        // Animate the title after loader fades out
+        setTimeout(function() {
+          var title = document.querySelector('h1.text-center');
+          if (title) {
+            title.classList.remove('animate__lightSpeedInLeft');
+            void title.offsetWidth; // Force reflow
+            title.classList.add('animate__lightSpeedInLeft');
+          }
+          setTimeout(typeWriter, 1200); // Start typewriter after title animation
+        }, 3000); // Wait for loader (3s)
 
         // Animate cards on scroll using Intersection Observer
         const observer = new IntersectionObserver(
@@ -726,22 +779,76 @@
             threshold: window.innerWidth < 768 ? 0.1 : 0.2
           }
         );
-
         document.querySelectorAll(".expense-card").forEach((card) => {
           observer.observe(card);
         });
       };
 
+      function animateTotalExpenditure(finalAmount) {
+        const el = document.getElementById('total-expenditure');
+        let current = 0;
+        const duration = 1200; // ms
+        const start = performance.now();
+        function step(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = Math.floor(progress * finalAmount);
+          el.textContent = '₹' + value.toLocaleString('en-IN');
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            el.textContent = '₹' + finalAmount.toLocaleString('en-IN');
+            // Reveal expense cards after animation
+            document.querySelectorAll('.expense-card').forEach(card => {
+              card.style.display = '';
+            });
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
       function calculateTotalExpenditure() {
-    let total = 0;
-    document.querySelectorAll('.amount-badge').forEach(el => {
-      const amount = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
-      if (!isNaN(amount)) total += amount;
-    });
-    document.getElementById('total-expenditure').textContent = '₹' + total.toLocaleString('en-IN');
-  }
-  // Run on page load
-  window.addEventListener('DOMContentLoaded', calculateTotalExpenditure);
+        let total = 0;
+        document.querySelectorAll('.amount-badge').forEach(el => {
+          const amount = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
+          if (!isNaN(amount)) total += amount;
+        });
+        animateTotalExpenditure(total);
+      }
+      // Run on page load
+  // Remove auto-run; now triggered after summary is visible
     </script>
   </body>
+  <script>
+  // Day/Night Toggle Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    var themeToggle = document.getElementById('theme-toggle');
+    var themeIcon = document.getElementById('theme-icon');
+    // Default to dark mode on first load
+    var darkMode = localStorage.getItem('darkMode');
+    if (darkMode === null) {
+      darkMode = true;
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      darkMode = localStorage.getItem('darkMode') === 'true';
+    }
+    function setTheme(dark) {
+      if (dark) {
+        document.body.classList.add('dark-mode');
+        themeToggle.classList.add('active');
+        themeIcon.textContent = 'light_mode';
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.body.classList.remove('dark-mode');
+        themeToggle.classList.remove('active');
+        themeIcon.textContent = 'dark_mode';
+        localStorage.setItem('darkMode', 'false');
+      }
+    }
+    setTheme(darkMode);
+    themeToggle.addEventListener('click', function() {
+      darkMode = !darkMode;
+      setTheme(darkMode);
+    });
+  });
+  </script>
 </html>
