@@ -180,9 +180,10 @@
       }
       .card-info-blocks {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 0.5rem;
         margin-bottom: 0.5rem;
+        width: 100%;
       }
       .info-pill {
         display: flex;
@@ -196,6 +197,11 @@
         box-shadow: 0 2px 8px rgba(33,37,41,0.08);
         border: none;
         margin-right: 0.2rem;
+      }
+      .info-pill .material-icons {
+        font-size: 1.2rem;
+        margin-right: 0.5rem;
+        color: #43cea2;
       }
       .amount-badge {
         display: block;
@@ -470,31 +476,21 @@
                   <span class="amount-badge">₹500</span>
                 </div>
                 <div class="col-12">
-                  <div class="card-info-blocks d-flex flex-wrap gap-2">
-                    <span class="info-pill"><strong>Date:</strong> 24-09-2025</span>
-                    <span class="info-pill"><strong>Location:</strong> MANGALORE-TIRUCHCHIRAPALI</span>
+                  <div class="card-info-blocks d-flex flex-column gap-2">
+                    <span class="info-pill">
+                      <span class="material-icons">event</span>
+                       24-09-2025
+                    </span>
+                    <span class="info-pill">
+                      <span class="material-icons">location_on</span>
+                      MANGALORE-TIRUCHCHIRAPALI
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer">
               <a href="4.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    
-    <div class="modal fade" id="billModal1" tabindex="-1" aria-labelledby="billModalLabel1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
-          <div class="modal-header border-0" style="padding-bottom:0;">
-            <h5 class="modal-title text-white fw-bold" id="billModalLabel1" style="letter-spacing:0.04em;">Train Ticket Bill</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:320px;">
-            <div class="bill-img-zoom-container mx-auto" style="max-width:100%; width:100%; text-align:center;">
-              <img id="billImg1" src="accounting.png" alt="Bill" class="img-fluid bill-img-zoom" style="max-width:100%; max-height:60vh; border-radius:12px; border: 2px solid #444; box-shadow: 0 2px 12px rgba(33,37,41,0.18); background: #181a1b; cursor: zoom-in; transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
           </div>
         </div>
@@ -514,31 +510,21 @@
                   <span class="amount-badge">₹800</span>
                 </div>
                 <div class="col-12">
-                  <div class="card-info-blocks d-flex flex-wrap gap-2">
-                    <span class="info-pill"><strong>Date:</strong> 25-09-2025</span>
-                    <span class="info-pill"><strong>Location:</strong> TIRUCHCHIRAPALI</span>
+                  <div class="card-info-blocks d-flex flex-column gap-2">
+                    <span class="info-pill">
+                      <span class="material-icons">event</span>
+                       25-09-2025
+                    </span>
+                    <span class="info-pill">
+                      <span class="material-icons">location_on</span>
+                      TIRUCHCHIRAPALI
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer">
               <a href="2.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    
-    <div class="modal fade" id="billModal2" tabindex="-1" aria-labelledby="billModalLabel2" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
-          <div class="modal-header border-0" style="padding-bottom:0;">
-            <h5 class="modal-title text-white fw-bold" id="billModalLabel2" style="letter-spacing:0.04em;">Hotel Bill</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:320px;">
-            <div class="bill-img-zoom-container mx-auto" style="max-width:100%; width:100%; text-align:center;">
-              <img id="billImg2" src="accounting.png" alt="Bill" class="img-fluid bill-img-zoom" style="max-width:100%; max-height:60vh; border-radius:12px; border: 2px solid #444; box-shadow: 0 2px 12px rgba(33,37,41,0.18); background: #181a1b; cursor: zoom-in; transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
           </div>
         </div>
@@ -558,31 +544,21 @@
                   <span class="amount-badge">₹1500</span>
                 </div>
                 <div class="col-12">
-                  <div class="card-info-blocks d-flex flex-wrap gap-2">
-                    <span class="info-pill"><strong>Date:</strong> 28-09-2025</span>
-                    <span class="info-pill"><strong>Location:</strong> Arrupukotai</span>
+                  <div class="card-info-blocks d-flex flex-column gap-2">
+                    <span class="info-pill">
+                      <span class="material-icons">event</span>
+                       28-09-2025
+                    </span>
+                    <span class="info-pill">
+                      <span class="material-icons">location_on</span>
+                      Arrupukotai
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer">
               <a href="1.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    
-    <div class="modal fade" id="billModal3" tabindex="-1" aria-labelledby="billModalLabel3" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
-          <div class="modal-header border-0" style="padding-bottom:0;">
-            <h5 class="modal-title text-white fw-bold" id="billModalLabel3" style="letter-spacing:0.04em;">Hotel Bill</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:320px;">
-            <div class="bill-img-zoom-container mx-auto" style="max-width:100%; width:100%; text-align:center;">
-              <img id="billImg3" src="accounting.png" alt="Bill" class="img-fluid bill-img-zoom" style="max-width:100%; max-height:60vh; border-radius:12px; border: 2px solid #444; box-shadow: 0 2px 12px rgba(33,37,41,0.18); background: #181a1b; cursor: zoom-in; transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
           </div>
         </div>
@@ -602,31 +578,21 @@
                   <span class="amount-badge">₹1218</span>
                 </div>
                 <div class="col-12">
-                  <div class="card-info-blocks d-flex flex-wrap gap-2">
-                    <span class="info-pill"><strong>Date:</strong> 01-10-2025</span>
-                    <span class="info-pill"><strong>Location:</strong> Madurai-Bangalore</span>
+                  <div class="card-info-blocks d-flex flex-column gap-2">
+                    <span class="info-pill">
+                      <span class="material-icons">event</span>
+                       01-10-2025
+                    </span>
+                    <span class="info-pill">
+                      <span class="material-icons">location_on</span>
+                      Madurai-Bangalore
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer">
               <a href="5.jpg" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    
-    <div class="modal fade" id="billModal4" tabindex="-1" aria-labelledby="billModalLabel4" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
-          <div class="modal-header border-0" style="padding-bottom:0;">
-            <h5 class="modal-title text-white fw-bold" id="billModalLabel4" style="letter-spacing:0.04em;">Bus Ticket Bill</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:320px;">
-            <div class="bill-img-zoom-container mx-auto" style="max-width:100%; width:100%; text-align:center;">
-              <img id="billImg4" src="accounting.png" alt="Bill" class="img-fluid bill-img-zoom" style="max-width:100%; max-height:60vh; border-radius:12px; border: 2px solid #444; box-shadow: 0 2px 12px rgba(33,37,41,0.18); background: #181a1b; cursor: zoom-in; transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
           </div>
         </div>
@@ -646,31 +612,21 @@
                   <span class="amount-badge">₹1174</span>
                 </div>
                 <div class="col-12">
-                  <div class="card-info-blocks d-flex flex-wrap gap-2">
-                    <span class="info-pill"><strong>Date:</strong> 02-10-2025</span>
-                    <span class="info-pill"><strong>Location:</strong> Bangalore-Mangalore</span>
+                  <div class="card-info-blocks d-flex flex-column gap-2">
+                    <span class="info-pill">
+                      <span class="material-icons">event</span>
+                       02-10-2025
+                    </span>
+                    <span class="info-pill">
+                      <span class="material-icons">location_on</span>
+                      Bangalore-Mangalore
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer">
               <a href="7.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener">View Bill</a>
-    
-    <div class="modal fade" id="billModal5" tabindex="-1" aria-labelledby="billModalLabel5" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: linear-gradient(120deg, #23272a 0%, #181a1b 100%); border-radius: 18px; border: none; box-shadow: 0 8px 32px rgba(33,37,41,0.18);">
-          <div class="modal-header border-0" style="padding-bottom:0;">
-            <h5 class="modal-title text-white fw-bold" id="billModalLabel5" style="letter-spacing:0.04em;">Bus Ticket Bill</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body d-flex justify-content-center align-items-center" style="min-height:320px;">
-            <div class="bill-img-zoom-container mx-auto" style="max-width:100%; width:100%; text-align:center;">
-              <img id="billImg5" src="accounting.png" alt="Bill" class="img-fluid bill-img-zoom" style="max-width:100%; max-height:60vh; border-radius:12px; border: 2px solid #444; box-shadow: 0 2px 12px rgba(33,37,41,0.18); background: #181a1b; cursor: zoom-in; transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
             </div>
           </div>
         </div>
@@ -753,8 +709,6 @@
         });
         animateTotalExpenditure(total);
       }
-      // Run on page load
-  // Remove auto-run; now triggered after summary is visible
     </script>
   </body>
 </html>
